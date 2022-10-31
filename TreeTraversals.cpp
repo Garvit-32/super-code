@@ -7,15 +7,15 @@ struct TreeNode
     struct TreeNode *left, *right;
 };
 
-void inorder(TreeNode *root, vector<int> &ans)
+void inorder(TreeNode *root, vector<int> &ans)//print tree in left->root->right
 {
-    if (!root)
+    if (!root)//return if reached null
     {
         return;
     }
-    inorder(root->left, ans);
+    inorder(root->left, ans);//travel left
     ans.push_back(root->val);
-    inorder(root->right, ans);
+    inorder(root->right, ans);//travel right after printing left
 }
 
 vector<int> inorderTraversal(TreeNode *root)
@@ -25,15 +25,15 @@ vector<int> inorderTraversal(TreeNode *root)
     return ans;
 }
 
-void preorder(TreeNode *root, vector<int> &ans)
+void preorder(TreeNode *root, vector<int> &ans)//print tree in root->left->right order
 {
-    if (!root)
+    if (!root)//return if reached null
     {
         return;
     }
-    ans.push_back(root->val);
-    preorder(root->left, ans);
-    preorder(root->right, ans);
+    ans.push_back(root->val);//store root
+    preorder(root->left, ans);//travel left
+    preorder(root->right, ans);//travel right
 }
 
 vector<int> preorderTraversal(TreeNode *root)
@@ -43,15 +43,15 @@ vector<int> preorderTraversal(TreeNode *root)
     return ans;
 }
 
-void postorder(TreeNode *root, vector<int> &ans)
+void postorder(TreeNode *root, vector<int> &ans)//prints tree in left->right->root order
 {
-    if (!root)
+    if (!root)//return if reached null
     {
         return;
     }
-    postorder(root->left, ans);
-    postorder(root->right, ans);
-    ans.push_back(root->val);
+    postorder(root->left, ans);//travel left
+    postorder(root->right, ans);//travel right
+    ans.push_back(root->val);//store root
 }
 
 vector<int> postorderTraversal(TreeNode *root)
